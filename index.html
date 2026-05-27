@@ -9,6 +9,7 @@
   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="/env-config.js"></script>
 
   <style>
     * {
@@ -311,19 +312,21 @@
   <div id="root"></div>
 
   <script type="text/babel">
-    const API_BASE = "http://localhost:3001";
+    const API_BASE = (
+      window.__ENV__?.API_BASE_URL || "http://localhost:3001"
+    ).replace(/\/$/, "");
 
     function getFriendlyErrorMessage(err) {
       if (err instanceof TypeError && err.message === "Failed to fetch") {
-        return "Không kết nối được Backend API. Hãy kiểm tra backend đã chạy ở http://localhost:3001 chưa.";
+        return `Không kết nối được Backend API tại ${API_BASE}. Hãy kiểm tra backend hoặc cấu hình FRONTEND_API_BASE_URL.`;
       }
 
       if (err.message && err.message.includes("Failed to fetch")) {
-        return "Không kết nối được Backend API. Hãy kiểm tra backend đã chạy ở http://localhost:3001 chưa.";
+        return `Không kết nối được Backend API tại ${API_BASE}. Hãy kiểm tra backend hoặc cấu hình FRONTEND_API_BASE_URL.`;
       }
 
       if (err.message && err.message.includes("NetworkError")) {
-        return "Không kết nối được Backend API. Hãy kiểm tra backend đã chạy ở http://localhost:3001 chưa.";
+        return `Không kết nối được Backend API tại ${API_BASE}. Hãy kiểm tra backend hoặc cấu hình FRONTEND_API_BASE_URL.`;
       }
 
       return err.message || "Có lỗi xảy ra";

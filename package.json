@@ -4,6 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "build:frontend": "node scripts/build-frontend.js",
+    "deploy:firebase": "npm run build:frontend && firebase deploy --only hosting",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
