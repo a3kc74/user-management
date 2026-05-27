@@ -9,7 +9,6 @@
   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <script src="/env-config.js"></script>
 
   <style>
     * {
@@ -312,8 +311,11 @@
   <div id="root"></div>
 
   <script type="text/babel">
+    const CONFIGURED_API_BASE = "__API_BASE_URL__";
     const API_BASE = (
-      window.__ENV__?.API_BASE_URL || "http://localhost:3001"
+      CONFIGURED_API_BASE.startsWith("__")
+        ? "http://localhost:3001"
+        : CONFIGURED_API_BASE
     ).replace(/\/$/, "");
 
     function getFriendlyErrorMessage(err) {

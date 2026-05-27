@@ -5,12 +5,9 @@ node_modules/
 
 dist/
 firebase-debug.log
-.env.example
 
 .firebaserc
 firebase-debug.log
 firebase.json
 
 .firebase
-
-README.md
