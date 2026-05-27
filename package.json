@@ -18,5 +18,13 @@
     "mongoose": "^9.6.2",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a3kc74/user-management.git"
+  },
+  "bugs": {
+    "url": "https://github.com/a3kc74/user-management/issues"
+  },
+  "homepage": "https://github.com/a3kc74/user-management#readme"
 }
